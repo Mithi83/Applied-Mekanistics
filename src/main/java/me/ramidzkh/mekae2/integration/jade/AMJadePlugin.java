@@ -14,12 +14,7 @@ import appeng.helpers.patternprovider.PatternProviderLogicHost;
  */
 @WailaPlugin
 public class AMJadePlugin implements IWailaPlugin {
-    private static final ResourceLocation[] CHEMICALS = {
-            ResourceLocation.fromNamespaceAndPath("mekanism", "gas"),
-            ResourceLocation.fromNamespaceAndPath("mekanism", "infuse_type"),
-            ResourceLocation.fromNamespaceAndPath("mekanism", "pigment"),
-            ResourceLocation.fromNamespaceAndPath("mekanism", "slurry"),
-    };
+    private static final ResourceLocation CHEMICALS = ResourceLocation.fromNamespaceAndPath("mekanism", "chemical");
 
     @Override
     public void registerClient(IWailaClientRegistration registration) {
@@ -27,9 +22,7 @@ public class AMJadePlugin implements IWailaPlugin {
             var target = accessor.getTarget();
 
             if (target instanceof InterfaceLogicHost || target instanceof PatternProviderLogicHost) {
-                for (var loc : CHEMICALS) {
-                    box.getTooltip().remove(loc);
-                }
+                box.getTooltip().remove(CHEMICALS);
             }
         });
     }
